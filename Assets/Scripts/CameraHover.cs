@@ -22,7 +22,7 @@ public class CameraHover : MonoBehaviour
     private void Start()
     {
         HoverEarth();
-        hoverDistance = 10;
+        hoverDistance = 30;
         rotationY = 20;
         rotationX = -90;
     }
