@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    public const float G = 6.7e-11f;
+	public readonly struct DefaultValues
+	{
+		public const float StartPosX = 384.4f;
+		public const float StartPosY = 0;
+		public const float StartPosZ = 0;
+		public const float StartVelX = 0;
+		public const float StartVelY = -406.53f;
+		public const float StartVelZ = 937.67f;
+		public const float TimeScale = 1;
+		public const double EarthMass = 5.9726e+24;
+		public const double MoonMass = 7.342e+22;
+	}
+
+	public const float G = 6.7e-11f;
     //1 unity distance unit = 1000km = 1000000m
     public const int DistanceConversion = 1000000;
 

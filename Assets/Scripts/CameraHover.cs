@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraHover : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CameraHover : MonoBehaviour
     public float ScrollSpeed = 5;
     public float smoothTime = 0.2f;
     public Gravity gravity;
+	public Toggle checkMark;
 
     private Transform target;
     private float rotationX;
@@ -17,6 +19,7 @@ public class CameraHover : MonoBehaviour
     private Vector3 curRotation;
     private float hoverDistance = 5f;
 	private float topDownHoverDistance = 600f;
+	private bool followEarth;
 
     private Vector3 smoothVelocity = Vector3.zero;
     
@@ -44,6 +47,11 @@ public class CameraHover : MonoBehaviour
 		target = null;
 	}
 
+	public void ChangeCheckMark()
+	{
+		followEarth = checkMark.isOn;
+	}
+
     private void LateUpdate()
     {
 		if (target != null)
@@ -59,7 +67,7 @@ public class CameraHover : MonoBehaviour
 			rotationY += inputY;
 
 			float angle = 0;
-			if (target.gameObject == Moon)
+			if (target.gameObject == Moon && followEarth)
 			{
 				Vector3 dir = gravity.DirectionToEarth();
 				dir.y = 0;
