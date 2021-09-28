@@ -95,10 +95,10 @@ public class TimeScaleSlider : MonoBehaviour
             Gravity.ChangeTimeScale(2551443);
         }
         moonTrailRenderer.time = 2551443 / Gravity.TimeScale;
-        //60 s/min
-        //3600 s/h
-        //86400 s/day
-        //604800 s/week
-        //2551443 s/month
-    }
+		//60 s/min
+		//3600 s/h
+		//86400 s/day
+		//604800 s/week
+		//2551443 s/month
+	}
 }

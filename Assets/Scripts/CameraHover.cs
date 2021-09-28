@@ -16,6 +16,7 @@ public class CameraHover : MonoBehaviour
     private float rotationY;
     private Vector3 curRotation;
     private float hoverDistance = 5f;
+	private float topDownHoverDistance = 600f;
 
     private Vector3 smoothVelocity = Vector3.zero;
     
@@ -38,44 +39,55 @@ public class CameraHover : MonoBehaviour
         target = Earth.transform;
     }
     
+	public void HoverTopDown()
+	{
+		target = null;
+	}
+
     private void LateUpdate()
     {
-        float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed * Time.deltaTime;
+		if (target != null)
+		{
+			float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed * Time.deltaTime;
 
-        hoverDistance = Mathf.Clamp(hoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 10 : 1)), 4, 500);
-        
-        float inputX = Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime;
-        float inputY = Input.GetAxis("Vertical") * RotationSpeed * Time.deltaTime;
+			hoverDistance = Mathf.Clamp(hoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 20 : 1)), 4, 500);
 
-        rotationX += inputX;
-        rotationY += inputY;
+			float inputX = Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime;
+			float inputY = Input.GetAxis("Vertical") * RotationSpeed * Time.deltaTime;
 
-        float angle = 0;
-        if (target.gameObject == Moon)
-        {
-            Vector3 dir = gravity.DirectionToEarth();
-            dir.y = 0;
-            dir.Normalize();
-            if (dir.z >= 0)
-            {
-                angle = Mathf.Rad2Deg * Mathf.Acos(dir.x);
-            }
-            else if (dir.z < 0)
-            {
-                angle = 360 - (Mathf.Rad2Deg * Mathf.Acos(dir.x));
-            }
-        }
-        Vector3 targetRotation = new Vector3(rotationY, -rotationX - angle);
-        // Disabled the smoothing since it caused jitter when passing from 360 deg to 0
-        curRotation = Vector3.SmoothDamp(curRotation, targetRotation, ref smoothVelocity, smoothTime);
-        curRotation = targetRotation;
+			rotationX += inputX;
+			rotationY += inputY;
 
-        transform.localEulerAngles = curRotation;
+			float angle = 0;
+			if (target.gameObject == Moon)
+			{
+				Vector3 dir = gravity.DirectionToEarth();
+				dir.y = 0;
+				dir.Normalize();
+				if (dir.z >= 0)
+				{
+					angle = Mathf.Rad2Deg * Mathf.Acos(dir.x);
+				}
+				else if (dir.z < 0)
+				{
+					angle = 360 - (Mathf.Rad2Deg * Mathf.Acos(dir.x));
+				}
+			}
+			Vector3 targetRotation = new Vector3(rotationY, -rotationX - angle);
+			// Disabled the smoothing since it caused jitter when passing from 360 deg to 0
+			curRotation = Vector3.SmoothDamp(curRotation, targetRotation, ref smoothVelocity, smoothTime);
+			curRotation = targetRotation;
 
-        transform.position = target.position - transform.forward * hoverDistance;
+			transform.localEulerAngles = curRotation;
 
-        //TODO 
-        //Fix when angle goes from 360 to 0 so it doesn't snap weirdly like it does at hight timescales
-        //add option to follow moon while hovering earth
+			transform.position = target.position - transform.forward * hoverDistance;
+		}
+		else
+		{
+			float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed * Time.deltaTime;
+			float earthAxis = Earth.transform.rotation.eulerAngles.x;
+			topDownHoverDistance = Mathf.Clamp(topDownHoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 100 : 10)), 100, 1000);
+			transform.SetPositionAndRotation(new Vector3(0, Mathf.Sin(earthAxis) * -topDownHoverDistance, (25 * (topDownHoverDistance / 100)) + Mathf.Cos(earthAxis) * -topDownHoverDistance), Quaternion.Euler(90 + earthAxis, 0, 0));
+		}
     }
 }
