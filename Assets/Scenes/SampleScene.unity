@@ -396,8 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Earth: {fileID: 2060404899}
   Moon: {fileID: 913004514}
-  RotationSpeed: 1
-  ScrollSpeed: 5
+  RotationSpeed: 60
+  ScrollSpeed: 300
   smoothTime: 0.02
   gravity: {fileID: 913004519}
 --- !u!1 &120140689
