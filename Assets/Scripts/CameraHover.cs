@@ -22,22 +22,26 @@ public class CameraHover : MonoBehaviour
     private void Start()
     {
         HoverEarth();
+        hoverDistance = 10;
     }
+    
     public void HoverMoon()
     {
         target = Moon.transform;
+        rotationX = 270;
     }
+    
     public void HoverEarth()
     {
         target = Earth.transform;
     }
+    
     private void LateUpdate()
     {
         float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed;
 
-        hoverDistance = Mathf.Clamp(hoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 10 : 1)), 4, 100);
-
-
+        hoverDistance = Mathf.Clamp(hoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 10 : 1)), 4, 500);
+        
         float inputX = Input.GetAxis("Horizontal") * RotationSpeed;
         float inputY = Input.GetAxis("Vertical") * RotationSpeed;
 
@@ -57,8 +61,10 @@ public class CameraHover : MonoBehaviour
                 angle = 360 - (Mathf.Rad2Deg * Mathf.Acos(dir.x));
             }
         }
-        Vector3 TargetRotation = new Vector3(rotationY, -rotationX - angle);
-        curRotation = Vector3.SmoothDamp(curRotation, TargetRotation, ref smoothVelocity, smoothTime);
+        Vector3 targetRotation = new Vector3(rotationY, -rotationX - angle);
+        // Commented the smoothing since it caused jitter when passing from 360 deg to 0
+        // curRotation = Vector3.SmoothDamp(curRotation, targetRotation, ref smoothVelocity, smoothTime);
+        curRotation = targetRotation;
 
         transform.localEulerAngles = curRotation;
 
