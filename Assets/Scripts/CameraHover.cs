@@ -23,6 +23,8 @@ public class CameraHover : MonoBehaviour
     {
         HoverEarth();
         hoverDistance = 10;
+        rotationY = 20;
+        rotationX = -90;
     }
     
     public void HoverMoon()
@@ -52,6 +54,8 @@ public class CameraHover : MonoBehaviour
         if (target.gameObject == Moon)
         {
             Vector3 dir = gravity.DirectionToEarth();
+            dir.y = 0;
+            dir.Normalize();
             if (dir.z >= 0)
             {
                 angle = Mathf.Rad2Deg * Mathf.Acos(dir.x);
@@ -62,8 +66,8 @@ public class CameraHover : MonoBehaviour
             }
         }
         Vector3 targetRotation = new Vector3(rotationY, -rotationX - angle);
-        // Commented the smoothing since it caused jitter when passing from 360 deg to 0
-        // curRotation = Vector3.SmoothDamp(curRotation, targetRotation, ref smoothVelocity, smoothTime);
+        // Disabled the smoothing since it caused jitter when passing from 360 deg to 0
+        curRotation = Vector3.SmoothDamp(curRotation, targetRotation, ref smoothVelocity, smoothTime);
         curRotation = targetRotation;
 
         transform.localEulerAngles = curRotation;
