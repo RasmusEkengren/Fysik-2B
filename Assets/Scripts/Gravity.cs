@@ -18,7 +18,7 @@ public class Gravity : MonoBehaviour
 
     private bool isCalculatingGravitationalForce = true;
 
-    private Vector3 currentVelocity;
+    public Vector3 CurrentVelocity { get; private set; }
 
     public static float TimeScale;
     
@@ -32,7 +32,7 @@ public class Gravity : MonoBehaviour
     }
     public void ResetMoon()
     {
-        currentVelocity = StartVelocity;
+		CurrentVelocity = StartVelocity;
         transform.position = StartPosition;
         isCalculatingGravitationalForce = true;
         TrailRenderer trail = GetComponent<TrailRenderer>();
@@ -53,23 +53,15 @@ public class Gravity : MonoBehaviour
     }
     private void Start()
     {
-        currentVelocity = StartVelocity;
+		CurrentVelocity = StartVelocity;
     }
     void FixedUpdate()
     {
         if (isCalculatingGravitationalForce)
         {
-            //f=m*a, a= f/m
             float acceleration = GetGravitationalForceInNewtons() / MoonMass;
-            currentVelocity += (DirectionToEarth() * (acceleration * Time.fixedDeltaTime * TimeScale));
+			CurrentVelocity += (DirectionToEarth() * (acceleration * Time.fixedDeltaTime * TimeScale));
         }
-        Moon.transform.position += Time.fixedDeltaTime * TimeScale * currentVelocity / DistanceConversion;
+        Moon.transform.position += Time.fixedDeltaTime * TimeScale * CurrentVelocity / DistanceConversion;
     }
-    //TODO
-    //ADD option to have everything rotate around earths axis
-    //Add buttons for EVERYTHING,
-    //Make it so you can change start position and velocity
-    //FIX TRAIL
-    //ADD option to have correct angle for MOONS rotation
-    //Maybe Add a freecam?
 }
