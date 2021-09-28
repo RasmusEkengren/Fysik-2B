@@ -40,12 +40,12 @@ public class CameraHover : MonoBehaviour
     
     private void LateUpdate()
     {
-        float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed;
+        float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed * Time.deltaTime;
 
         hoverDistance = Mathf.Clamp(hoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 10 : 1)), 4, 500);
         
-        float inputX = Input.GetAxis("Horizontal") * RotationSpeed;
-        float inputY = Input.GetAxis("Vertical") * RotationSpeed;
+        float inputX = Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime;
+        float inputY = Input.GetAxis("Vertical") * RotationSpeed * Time.deltaTime;
 
         rotationX += inputX;
         rotationY += inputY;
