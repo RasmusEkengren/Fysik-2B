@@ -393,7 +393,7 @@ Camera:
   m_GameObject: {fileID: 48769182}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -495,8 +495,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 536.25, y: 235}
-  m_SizeDelta: {x: -1696, y: -1025.9}
+  m_AnchoredPosition: {x: 526.92053, y: 235}
+  m_SizeDelta: {x: -1677.3, y: -1025.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60907135
 MonoBehaviour:
@@ -531,7 +531,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Moon Mass:'
+  m_Text: 'Moon Mass [kg]:'
 --- !u!222 &60907136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1605,8 +1605,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 377.0001, y: 364}
-  m_SizeDelta: {x: -1696, y: -1025.9}
+  m_AnchoredPosition: {x: 350.23, y: 364}
+  m_SizeDelta: {x: -1642.5, y: -1025.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510943363
 MonoBehaviour:
@@ -1641,7 +1641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Start Velocity:'
+  m_Text: 'Start Velocity [m/s]:'
 --- !u!222 &510943364
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1917,7 +1917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 14.995972, y: 568.99963}
+  m_AnchoredPosition: {x: 14.996094, y: 568.99963}
   m_SizeDelta: {x: 29.997, y: 136.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626989067
@@ -2801,8 +2801,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 377.0001, y: 437}
-  m_SizeDelta: {x: -1696, y: -1025.9}
+  m_AnchoredPosition: {x: 346.32703, y: 437}
+  m_SizeDelta: {x: -1634.6538, y: -1025.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &762321833
 MonoBehaviour:
@@ -2837,7 +2837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Start Position:'
+  m_Text: 'Start Position [Mm]:'
 --- !u!222 &762321834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4073,8 +4073,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 536.24, y: 298}
-  m_SizeDelta: {x: -1696, y: -1025.9}
+  m_AnchoredPosition: {x: 526.9155, y: 298}
+  m_SizeDelta: {x: -1677.3511, y: -1025.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183793475
 MonoBehaviour:
@@ -4109,7 +4109,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Earth Mass:'
+  m_Text: 'Earth Mass [kg]:'
 --- !u!222 &1183793476
 CanvasRenderer:
   m_ObjectHideFlags: 0
