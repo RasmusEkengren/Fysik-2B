@@ -94,7 +94,7 @@ public class CameraHover : MonoBehaviour
 		{
 			float inputScroll = Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed * Time.deltaTime;
 			float earthAxis = Earth.transform.rotation.eulerAngles.x;
-			topDownHoverDistance = Mathf.Clamp(topDownHoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 100 : 10)), 100, 1000);
+			topDownHoverDistance = Mathf.Clamp(topDownHoverDistance - (inputScroll * (Input.GetKey(KeyCode.LeftShift) ? 100 : 10)), 100, 5000);
 			transform.SetPositionAndRotation(new Vector3(0, Mathf.Sin(earthAxis) * -topDownHoverDistance, (25 * (topDownHoverDistance / 100)) + Mathf.Cos(earthAxis) * -topDownHoverDistance), Quaternion.Euler(90 + earthAxis, 0, 0));
 		}
     }
