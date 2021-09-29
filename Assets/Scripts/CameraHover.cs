@@ -29,6 +29,7 @@ public class CameraHover : MonoBehaviour
         hoverDistance = 30;
         rotationY = 20;
         rotationX = -90;
+        ChangeCheckMark();
     }
     
     public void HoverMoon()
@@ -47,7 +48,7 @@ public class CameraHover : MonoBehaviour
 		target = null;
 	}
 
-	public void ChangeCheckMark()
+	public void ChangeCheckMark() // This does like, the exact opposite of what its name says lol
 	{
 		followEarth = checkMark.isOn;
 	}
