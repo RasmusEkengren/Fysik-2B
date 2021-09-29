@@ -19,7 +19,7 @@ public class CameraHover : MonoBehaviour
     private Vector3 curRotation;
     private float hoverDistance = 5f;
 	private float topDownHoverDistance = 600f;
-	private bool followEarth;
+	private bool followEarth = true;
 
     private Vector3 smoothVelocity = Vector3.zero;
     

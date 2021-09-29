@@ -12,6 +12,8 @@ public class Info : MonoBehaviour
     {
 		infoPanel.text = "Speed: " + (gravity.CurrentVelocity.magnitude * 1000) + "km/s\r\n" +
 						 "Force: " + gravity.GetGravitationalForceInNewtons() + "N\r\n" +
-						 "Distance: " + gravity.GetDistanceInMeters() + "m";
+						 "Distance: " + gravity.GetDistanceInMeters() + "m\r\n" +
+						 "Position: " + gravity.transform.position.ToString("0.00") + "Mm\r\n" +
+						 "Current Velocity: " + gravity.CurrentVelocity.ToString("0.00") + "Mm/s";
     }
 }
