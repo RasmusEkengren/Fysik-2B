@@ -4741,7 +4741,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 48769186}
         m_TargetAssemblyTypeName: CameraHover, Assembly-CSharp
-        m_MethodName: ChangeCheckMark
+        m_MethodName: SetFollowEarth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
